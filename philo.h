@@ -23,11 +23,11 @@
 */
 typedef struct s_data
 {
-    int philo_n;
+    int philo_total;
     int time_to_die;
     int time_to_eat;
     int time_to_sleep;
-    int eat_n;
+    int eat_total;
 }				t_data;
 
 /*
@@ -35,11 +35,12 @@ typedef struct s_data
 */
 typedef struct s_philo
 {
-	int	philo;
+    int	id;
 }				t_philo;
 
 //philo_main.c
 void	ft_init_data(char **av, t_data *data);
+void	ft_init_philo(t_data *data);
 
 //philo_utils.c
 int     ft_isdigit(int c);

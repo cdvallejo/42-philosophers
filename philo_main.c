@@ -6,7 +6,7 @@
 /*   By: cvallejo <cvallejo@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 14:43:40 by cvallejo          #+#    #+#             */
-/*   Updated: 2023/09/07 16:48:52 by cvallejo         ###   ########.fr       */
+/*   Updated: 2023/09/13 16:43:01 by cvallejo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,36 @@
 */
 void	ft_init_data(char **av, t_data *data)
 {
-	data->philo_n = ft_atoi(av[1]);
+	data->philo_total = ft_atoi(av[1]);
 	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);
 	data->time_to_sleep = ft_atoi(av[4]);
 	if (av[5] != NULL)
-		data->eat_n = ft_atoi(av[5]);
-	printf("%d\n", data->philo_n);
+		data->eat_total = ft_atoi(av[5]);
+	printf("%d\n", data->philo_total);
 	printf("%d\n", data->time_to_die);
 	printf("%d\n", data->time_to_eat);
 	printf("%d\n", data->time_to_sleep);
-	printf("%d\n", data->eat_n);
+	printf("%d\n", data->eat_total);
+}
+
+void	ft_init_philo(t_data *data)
+{
+	t_philo	philo[data->philo_total];
+	int i;
+
+	i = 0;
+	while(i < data->philo_total)
+	{
+		philo[i].id = i;
+		i++;
+	}
+	i = 0;
+	while(i < data->philo_total)
+	{
+		printf("%d", philo[i].id);
+		i++;
+	}
 }
 
 int	main(int ac, char **av)
@@ -45,6 +64,6 @@ int	main(int ac, char **av)
 
 	ft_check_args(ac, av);
 	ft_init_data(av, &data);
-
+	ft_init_philo(&data);
 	return (0);
 }
