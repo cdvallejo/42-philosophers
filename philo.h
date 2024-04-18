@@ -14,38 +14,38 @@
 # define PHILO_H
 
 # include <pthread.h>
-# include <sys/time.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <sys/time.h>
 
 /*
-    Struct for data values
+	Struct for data values
 */
 typedef struct s_data
 {
-    int philo_total;
-    int time_to_die;
-    int time_to_eat;
-    int time_to_sleep;
-    int eat_total;
-}				t_data;
+	int	philo_total;
+	int	time_to_die;
+	int	time_to_eat;
+	int	time_to_sleep;
+	int	eat_total;
+}		t_data;
 
 /*
-    Struct for philosophers values
+	Struct for philosophers values
 */
 typedef struct s_philo
 {
-    int	id;
-}				t_philo;
+	int	id;
+}		t_philo;
 
-//philo_main.c
+// philo_main.c
 void	ft_init_data(char **av, t_data *data);
 void	ft_init_philo(t_data *data);
 
-//philo_utils.c
-int     ft_isdigit(int c);
-int     ft_isnumber(char *str);
-int	    ft_atoi(char *str);
-void    ft_check_args(int ac, char **av);
+// philo_utils.c
+int		ft_isdigit(int c);
+int		ft_isnumber(char *str);
+int		ft_atoi(char *str);
+void	ft_check_args(int ac, char **av);
 
 #endif

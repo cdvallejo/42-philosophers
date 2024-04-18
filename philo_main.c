@@ -14,10 +14,10 @@
 
 /*
 	Inicialización de la estrutura de datos con:
-	av[1] 		    	= number_of_philosophers
-	av[2] 		    	= time_to_die
-	av[3] 		    	= time_to_eat
-	av[4] 			    = time_to_sleep
+	av[1] 					= number_of_philosophers
+	av[2] 					= time_to_die
+	av[3] 					= time_to_eat
+	av[4] 					= time_to_sleep
 	av[5] (opcional)    = [number_of_times_each_philosopher_must_eat]
 	Si sólo hay 4 argumentos, el quinto elemento de char **av es el NULL del
 	string, por tanto es una buena solución. La otra manera de controlar esto
@@ -49,16 +49,16 @@ void	ft_init_data(char **av, t_data *data)
 void	ft_init_philo(t_data *data)
 {
 	t_philo	philo[data->philo_total];
-	int i;
+	int		i;
 
 	i = 0;
-	while(i < data->philo_total)
+	while (i < data->philo_total)
 	{
 		philo[i].id = i;
 		i++;
 	}
 	i = 0;
-	while(i < data->philo_total)
+	while (i < data->philo_total)
 	{
 		printf("%d", philo[i].id);
 		i++;
