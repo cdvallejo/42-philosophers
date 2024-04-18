@@ -23,10 +23,13 @@
 	string, por tanto es una buena solución. La otra manera de controlar esto
 	sería introduciendo ac como parámetro. Sea como sea, sin ese dato n_eat se
 	inicializa a 0;
+	En el caso de que haya 0 filósofos el programa se cierra.
 */
 void	ft_init_data(char **av, t_data *data)
 {
 	data->philo_total = ft_atoi(av[1]);
+	if (data->philo_total == 0)
+		exit(0);
 	data->time_to_die = ft_atoi(av[2]);
 	data->time_to_eat = ft_atoi(av[3]);
 	data->time_to_sleep = ft_atoi(av[4]);
@@ -39,6 +42,10 @@ void	ft_init_data(char **av, t_data *data)
 	printf("%d\n", data->eat_total);
 }
 
+/*
+	Inicialización de la estructura de filósofos. Se inicializa con un bucle
+	que recorre el número de filósofos y se les asigna un id.
+*/
 void	ft_init_philo(t_data *data)
 {
 	t_philo	philo[data->philo_total];
