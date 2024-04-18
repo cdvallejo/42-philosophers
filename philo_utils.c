@@ -83,5 +83,5 @@ void	ft_check_args(int ac, char **av)
 		}
 	}
 	else
-		exit (1);
+		exit(1);
 }
