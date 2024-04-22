@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cvallejo <cvallejo@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 14:43:40 by cvallejo          #+#    #+#             */
-/*   Updated: 2023/09/13 16:43:01 by cvallejo         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:32:41 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,19 +48,36 @@ void	ft_init_data(char **av, t_data *data)
 */
 void	ft_init_philo(t_data *data)
 {
-	t_philo	philo[data->philo_total];
+	t_philo *philo;
+	
+	philo = (t_philo *)malloc(sizeof (t_philo) * data->philo_total);
 	int		i;
 
 	i = 0;
 	while (i < data->philo_total)
 	{
-		philo[i].id = i;
+		philo[i].id = i + 1;
+		if ((philo[i].id != 1) && (philo[i].id != data->philo_total))
+		{
+			philo[i].left_fork = philo[i].id + 1;
+			philo[i].right_fork = philo[i].id - 1;
+		}
+		else if (philo[i].id == data->philo_total)
+		{
+			philo[i].left_fork = 1;
+			philo[i].right_fork = philo[i].id - 1;
+		}
+		else
+		{
+			philo[i].left_fork = philo[i].id + 1;
+			philo[i].right_fork = data->philo_total;
+		}
 		i++;
 	}
 	i = 0;
 	while (i < data->philo_total)
 	{
-		printf("%d", philo[i].id);
+		printf("Soy el philo nº %d, mi fork izquierdo es el %d y mi fork derecho el es %d\n", philo[i].id, philo[i].left_fork, philo[i].right_fork);
 		i++;
 	}
 }

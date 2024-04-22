@@ -36,6 +36,9 @@ typedef struct s_data
 typedef struct s_philo
 {
 	int	id;
+	int		eat_count;
+	int		left_fork;
+	int		right_fork;
 }		t_philo;
 
 // philo_main.c
