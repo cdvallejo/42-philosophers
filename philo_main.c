@@ -62,20 +62,15 @@ void	ft_philo_id_forks(t_data *data, t_philo *philo)
 	while (i < data->philo_total)
 	{
 		philo[i].id = i + 1;
-		if ((philo[i].id != 1) && (philo[i].id != data->philo_total))
+		if (philo[i].id != data->philo_total)
 		{
 			philo[i].left_fork = philo[i].id + 1;
-			philo[i].right_fork = philo[i].id - 1;
-		}
-		else if (philo[i].id == data->philo_total)
-		{
-			philo[i].left_fork = 1;
-			philo[i].right_fork = philo[i].id - 1;
+			philo[i].right_fork = philo[i].id;
 		}
 		else
 		{
-			philo[i].left_fork = philo[i].id + 1;
-			philo[i].right_fork = data->philo_total;
+			philo[i].left_fork = philo[0].id;
+			philo[i].right_fork = philo[i].id;
 		}
 		i++;
 	}

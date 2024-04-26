@@ -31,7 +31,8 @@ typedef struct s_data
 }		t_data;
 
 /*
-	Struct for philosophers values
+	Struct para los philosophers, con sus id
+	Los tenedores izquierdo y derecho son los identificadores de los mutex
 */
 typedef struct s_philo
 {
@@ -53,3 +54,15 @@ int		ft_atoi(char *str);
 void	ft_check_args(int ac, char **av);
 
 #endif
+
+// Supongamos que tenemos 5 filosofos
+
+// Creamos un array con 5 mutex
+array_de_mutex = pthread_mutex[5];
+
+philo[0].left_fork = 0;
+philo[0].right_fork = 1;
+
+// Queremos que el philo[0] coja el tenedor 0 y 1
+pthread_mutex_lock(&array_de_mutex[philo[0].left_fork]); // == pthread_mutex_lock(&array_de_mutex[0]); == bloquear el tenedor 0
+pthread_mutex_lock(&array_de_mutex[philo[0].right_fork]); // == pthread_mutex_lock(&array_de_mutex[1]); == bloquear el tenedor 1
