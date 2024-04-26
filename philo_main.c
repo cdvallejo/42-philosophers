@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cvallejo <cvallejo@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 14:43:40 by cvallejo          #+#    #+#             */
-/*   Updated: 2023/09/13 16:43:01 by cvallejo         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:32:41 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 	av[2] 					= time_to_die
 	av[3] 					= time_to_eat
 	av[4] 					= time_to_sleep
-	av[5] (opcional)    = [number_of_times_each_philosopher_must_eat]
+	av[5] (opcional)   		= [number_of_times_each_philosopher_must_eat]
 	Si sólo hay 4 argumentos, el quinto elemento de char **av es el NULL del
 	string, por tanto es una buena solución. La otra manera de controlar esto
 	sería introduciendo ac como parámetro. Sea como sea, sin ese dato n_eat se
@@ -35,11 +35,6 @@ void	ft_init_data(char **av, t_data *data)
 	data->time_to_sleep = ft_atoi(av[4]);
 	if (av[5] != NULL)
 		data->eat_total = ft_atoi(av[5]);
-	printf("%d\n", data->philo_total);
-	printf("%d\n", data->time_to_die);
-	printf("%d\n", data->time_to_eat);
-	printf("%d\n", data->time_to_sleep);
-	printf("%d\n", data->eat_total);
 }
 
 /*
@@ -48,19 +43,46 @@ void	ft_init_data(char **av, t_data *data)
 */
 void	ft_init_philo(t_data *data)
 {
-	t_philo	philo[data->philo_total];
-	int		i;
+	t_philo	*philo;
+
+	philo = (t_philo *)malloc(sizeof(t_philo) * data->philo_total);
+	if (!philo)
+		exit(0);
+	ft_philo_id_forks(data, philo);
+}
+
+/*
+	Subfunción que inicializa los id de los filósofos y los tenedores.
+*/
+void	ft_philo_id_forks(t_data *data, t_philo *philo)
+{
+	int	i;
 
 	i = 0;
 	while (i < data->philo_total)
 	{
-		philo[i].id = i;
+		philo[i].id = i + 1;
+		if ((philo[i].id != 1) && (philo[i].id != data->philo_total))
+		{
+			philo[i].left_fork = philo[i].id + 1;
+			philo[i].right_fork = philo[i].id - 1;
+		}
+		else if (philo[i].id == data->philo_total)
+		{
+			philo[i].left_fork = 1;
+			philo[i].right_fork = philo[i].id - 1;
+		}
+		else
+		{
+			philo[i].left_fork = philo[i].id + 1;
+			philo[i].right_fork = data->philo_total;
+		}
 		i++;
 	}
 	i = 0;
 	while (i < data->philo_total)
 	{
-		printf("%d", philo[i].id);
+		printf("Soy el philo nº %d, mi fork izquierdo es el %d y mi fork derecho el es %d\n ", philo[i].id, philo[i].left_fork,philo[i].right_fork);
 		i++;
 	}
 }

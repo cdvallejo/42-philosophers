@@ -36,11 +36,15 @@ typedef struct s_data
 typedef struct s_philo
 {
 	int	id;
+	int	eat_count;
+	int	left_fork;
+	int	right_fork;
 }		t_philo;
 
 // philo_main.c
 void	ft_init_data(char **av, t_data *data);
 void	ft_init_philo(t_data *data);
+void	ft_philo_id_forks(t_data *data, t_philo *philo);
 
 // philo_utils.c
 int		ft_isdigit(int c);
