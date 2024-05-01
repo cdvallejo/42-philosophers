@@ -43,9 +43,13 @@ typedef struct s_philo
 }		t_philo;
 
 // philo_main.c
+int		main(int ac, char **av);
+
+// philo_init.c
 void	ft_init_data(char **av, t_data *data);
 void	ft_init_philo(t_data *data);
 void	ft_philo_id_forks(t_data *data, t_philo *philo);
+void	ft_mutex_init(t_data *data);
 
 // philo_utils.c
 int		ft_isdigit(int c);
@@ -54,15 +58,3 @@ int		ft_atoi(char *str);
 void	ft_check_args(int ac, char **av);
 
 #endif
-
-// Supongamos que tenemos 5 filosofos
-
-// Creamos un array con 5 mutex
-array_de_mutex = pthread_mutex[5];
-
-philo[0].left_fork = 0;
-philo[0].right_fork = 1;
-
-// Queremos que el philo[0] coja el tenedor 0 y 1
-pthread_mutex_lock(&array_de_mutex[philo[0].left_fork]); // == pthread_mutex_lock(&array_de_mutex[0]); == bloquear el tenedor 0
-pthread_mutex_lock(&array_de_mutex[philo[0].right_fork]); // == pthread_mutex_lock(&array_de_mutex[1]); == bloquear el tenedor 1

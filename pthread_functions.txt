@@ -1,0 +1,19 @@
+Documento que describe las funciones utilizadas de la librería <pthread.h>
+
+- int pthread_mutex_init(pthread_mutex_t *mutex, const pthread_mutexattr_t *attr);
+
+Esta función inicializa un hilo de mutex referenciado por *mutex y con atributos especificados por *attr. En nuestro programa le pasamos
+un array como primer parámetro y NULL como segundo. Si attr es NULL, se utilizan los atributos mutex predeterminados; el efecto es el mismo que pasar la dirección de un objeto de atributos mutex predeterminado.
+Devuelve 0 si se ha creado correctamente y se inicializa como unlock.
+
+// Creamos un array con 5 mutex
+array_de_mutex = pthread_mutex[5];
+
+philo[0].left_fork = 0;
+philo[0].right_fork = 1;
+
+// Queremos que el philo[0] coja el tenedor 0 y 1
+pthread_mutex_lock(&array_de_mutex[philo[0].left_fork]); 
+	// == pthread_mutex_lock(&array_de_mutex[0]); == bloquear el tenedor 0
+pthread_mutex_lock(&array_de_mutex[philo[0].right_fork]);
+	// == pthread_mutex_lock(&array_de_mutex[1]); == bloquear el tenedor 1
