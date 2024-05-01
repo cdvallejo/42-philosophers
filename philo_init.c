@@ -6,7 +6,7 @@
 /*   By: cvallejo <cvallejo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/01 16:39:26 by cvallejo          #+#    #+#             */
-/*   Updated: 2024/05/01 16:52:41 by cvallejo         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:58:57 by cvallejo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ft_philo_id_forks(t_data *data, t_philo *philo)
 	}*/
 }
 
-/* Iniciamos el array de mutex y los asingamos a un hilo de mutex con la
+/* Iniciamos el array de mutex y lo asignamos a un hilo de mutex con la
 función pthrad_mutex_init */
 void	ft_mutex_init(t_data *data)
 {
