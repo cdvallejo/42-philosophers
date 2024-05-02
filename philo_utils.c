@@ -3,14 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   philo_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cvallejo <cvallejo@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: cvallejo <cvallejo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 14:43:40 by cvallejo          #+#    #+#             */
-/*   Updated: 2023/09/07 16:57:28 by cvallejo         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:48:53 by cvallejo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+/*
+	Comprobamos el número de argumentos introducidos válidos
+	y se asegura de que son números.
+*/
+void	ft_check_args(int ac, char **av)
+{
+	int	i;
+
+	if (ac == 5 || ac == 6)
+	{
+		i = 1;
+		while (i < ac)
+		{
+			if (ft_isnumber(av[i]) != 0)
+			{
+				exit(1);
+			}
+			i++;
+		}
+	}
+	else
+		exit(1);
+}
 
 /*
 	Subfunción que controlamos si el caracter es un dígito.
@@ -62,26 +86,14 @@ int	ft_atoi(char *str)
 	return (result);
 }
 
-/*
-	Comprobamos el número de argumentos introducidos válidos
-	y se asegura de que son números.
-*/
-void	ft_check_args(int ac, char **av)
+long long int	ft_get_time(void)
 {
-	int	i;
+	struct timeval	start;
+	struct timeval	end;
+	long long int	time_in_miliseconds;
 
-	if (ac == 5 || ac == 6)
-	{
-		i = 1;
-		while (i < ac)
-		{
-			if (ft_isnumber(av[i]) != 0)
-			{
-				exit(1);
-			}
-			i++;
-		}
-	}
-	else
-		exit(1);
+	gettimeofday(start, NULL);
+	usleep(5000);
+	gettimeofday(end, NULL);
+	time_in_miliseconds = 
 }
